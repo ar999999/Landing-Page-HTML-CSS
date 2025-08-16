@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Lightweight marketing landing page demonstrating semantic HTML and performance best practices.">
+  <meta name="theme-color" content="#0b1220">
+
+  <title>Landing Page made by me </title>
+
+  <!-- Use a small set of system fonts to avoid additional network requests -->
+  <style>
+    /* ===== Minimal CSS reset ===== */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;line-height:1.45;color:#0b1220;background:#f6f8fb;-webkit-font-smoothing:antialiased}
+
+    /* ===== Utility variables & layout ===== */
+    :root{
+      --accent:#0b63ff;
+      --muted:#6b7280;
+      --container:1100px;
+      --radius:12px;
+      --flow:1.2rem;
+    }
+
+    .container{max-width:var(--container);margin:0 auto;padding:2rem}
+
+    /* ===== Skip link for keyboard users ===== */
+    .skip-link{position:absolute;left:0;top:0;background:#111;color:#fff;padding:.5rem 1rem;border-radius:0 0 .25rem .25rem;transform:translateY(-120%);transition:transform .18s ease;z-index:100}
+    .skip-link:focus{transform:translateY(0)}
+
+    header{background:linear-gradient(180deg,#ffffffcc,transparent);backdrop-filter:blur(4px);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(11,18,32,.04)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem}
+    .brand{display:flex;gap:.75rem;align-items:center}
+    .brand svg{width:36px;height:36px;display:block}
+    nav ul{display:flex;gap:1rem;list-style:none;padding:0;margin:0}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:var(--accent);color:#fff;padding:.6rem .9rem;border-radius:10px;text-decoration:none;font-weight:700}
+
+    /* ===== Hero ===== */
+    .hero{display:grid;grid-template-columns:1fr 460px;gap:2rem;align-items:center;padding:4rem 0}
+    .hero h1{font-size:clamp(1.7rem,3.4vw,2.6rem);margin:0 0 .6rem}
+    .hero p{color:var(--muted);margin:0 0 1rem}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+    .card{background:#fff;border-radius:var(--radius);padding:1rem;box-shadow:0 6px 18px rgba(8,13,24,.06);min-height:86px}
+    .card h3{margin:.25rem 0 .25rem;font-size:1rem}
+    .card p{color:var(--muted);font-size:.9rem;margin:0}
+
+    /* ===== Media (illustration) ===== */
+    .hero-figure{display:flex;align-items:center;justify-content:center}
+    figure{margin:0}
+    img{max-width:100%;height:auto;display:block;border-radius:12px}
+
+    /* ===== CTA band ===== */
+    .band{display:flex;gap:1rem;align-items:center;justify-content:space-between;background:linear-gradient(90deg,#eef4ff,#fbfdff);padding:1rem;border-radius:12px;margin:2rem 0}
+
+    /* ===== Features / sections ===== */
+    main section{padding:3rem 0}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+
+    /* ===== Footer ===== */
+    footer{border-top:1px solid rgba(11,18,32,.04);padding:2rem 0;color:var(--muted);font-size:.95rem}
+
+    /* ===== Responsiveness & small perf niceties ===== */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .grid-2{grid-template-columns:1fr}
+      .container{padding:1rem}
+    }
+
+    @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header role="banner" aria-label="Primary header">
+    <div class="container nav">
+      <div class="brand">
+        <!-- Inline SVG logo avoids extra request -->
+        <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+          <rect width="48" height="48" rx="10" fill="#0b63ff"></rect>
+          <path d="M12 28 L20 16 L28 28 Z" fill="#fff" transform="translate(4,4)"></path>
+        </svg>
+        <div>
+          <strong>Landing Page Made By Me -Athrav </strong>
+          <div style="font-size:.8rem;color:var(--muted)">Fast. Accessible. Minimal.</div>
+        </div>
+      </div>
+
+      <nav role="navigation" aria-label="Primary navigation">
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a class="cta" href="#signup">Get started</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+    <div class="container">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div>
+          <h1 id="hero-heading">Shipping blazing-fast marketing pages — built with semantics & performance</h1>
+          <p>We focus on clean markup, small payloads, and accessibility so your pages load quickly and convert better.</p>
+
+          <div class="band" role="region" aria-label="Quick stats">
+            <div>
+              <strong>~48KB</strong>
+              <div style="color:var(--muted);font-size:.9rem">Avg page CSS + HTML (optimized)</div>
+            </div>
+            <div>
+              <strong>Accessible</strong>
+              <div style="color:var(--muted);font-size:.9rem">WCAG-friendly semantics</div>
+            </div>
+            <div>
+              <strong>Server friendly</strong>
+              <div style="color:var(--muted);font-size:.9rem">Cache-first & CDN-ready</div>
+            </div>
+          </div>
+
+          <div class="features" id="features" aria-hidden="false">
+            <article class="card">
+              <h3>Semantic HTML</h3>
+              <p>Use headings, landmarks and meaningful tags for accessibility and SEO.</p>
+            </article>
+
+            <article class="card">
+              <h3>Optimized images</h3>
+              <p>Responsive images with <code>srcset</code> and lazy loading.</p>
+            </article>
+
+            <article class="card">
+              <h3>Minimal CSS</h3>
+              <p>Small-critical CSS and system fonts to remove render-blocking requests.</p>
+            </article>
+          </div>
+        </div>
+
+        <figure class="hero-figure" aria-hidden="true">
+          <!-- Example responsive image (replace with optimized WebP/AVIF in production) -->
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='520'><rect width='100%' height='100%' fill='%23eef6ff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='28' fill='%230b63ff' font-family='Arial,Helvetica'>Illustration placeholder</text></svg>" alt="Illustration showing fast page load" width="460" height="300" loading="lazy">
+        </figure>
+      </section>
+
+      <section aria-labelledby="how-heading">
+        <div class="grid-2">
+          <div>
+            <h2 id="how-heading">How we keep things fast</h2>
+            <p>Performance is the result of decisions: smaller payloads, fewer requests, and sensible caching.</p>
+            <ul>
+              <li><strong>Critical CSS</strong> inlined; non-critical styles deferred.</li>
+              <li><strong>System font stack</strong> to avoid font-download FOUT/FOIT penalties.</li>
+              <li><strong>Lazy load images</strong> and use modern formats (AVIF/WebP) in production.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 id="pricing">Simple pricing</h3>
+            <p style="color:var(--muted)">Choose a tier based on traffic and CDN requirements.</p>
+            <div style="display:flex;gap:1rem;margin-top:1rem">
+              <div class="card" style="flex:1;text-align:center">
+                <div style="font-weight:800;font-size:1.2rem">Free</div>
+                <div style="color:var(--muted)">Good for prototypes</div>
+              </div>
+              <div class="card" style="flex:1;text-align:center">
+                <div style="font-weight:800;font-size:1.2rem">Pro</div>
+                <div style="color:var(--muted)">Production sites</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="signup">
+        <h2 id="signup">Get started — 30 day free trial</h2>
+        <p style="color:var(--muted)">No credit card required. Deploy your first page in minutes.</p>
+        <!-- Minimal, accessible form. Use server-side validation in production. -->
+        <form action="#" method="post" style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:1rem" aria-label="Sign up for free trial">
+          <label for="email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Email</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@company.com" style="padding:.6rem .8rem;border-radius:10px;border:1px solid rgba(11,18,32,.06);min-width:220px">
+          <button class="cta" type="submit" style="border:none;cursor:pointer">Start free</button>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container" style="display:flex;flex-direction:column;gap:.75rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <div style="display:flex;gap:.75rem;align-items:center">
+          <svg width="28" height="28" aria-hidden="true" focusable="false"><rect width="28" height="28" rx="6" fill="#0b63ff"></rect></svg>
+          <div>
+            <strong>AR</strong>
+            <div style="color:var(--muted);font-size:.9rem">© <span id="year"></span> Athrav Rajmane. All rights reserved.</div>
+          </div>
+        </div>
+        <nav aria-label="Footer navigation">
+          <ul style="display:flex;gap:1rem;list-style:none;margin:0;padding:0">
+            <li><a href="#about">About</a></li>
+            <li><a href="#privacy">Privacy</a></li>
+            <li><a href="#terms">Terms</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div style="color:var(--muted);font-size:.9rem">Built with semantic HTML, small payloads, and accessibility in mind.</div>
+    </div>
+  </footer>
+
+  <!-- Tiny inline script to fill the copyright year. use defer pattern if larger scripts are needed -->
+  <script>
+    // Non-critical, tiny script executed after parsing (keeps initial render CSS-only)
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Accessibility: add focus outline only when user navigates by keyboard
+    (function(){
+      function handleFirstTab(e){
+        if(e.key === 'Tab') document.documentElement.classList.add('user-is-tabbing');
+      }
+      window.addEventListener('keydown', handleFirstTab, {once:true});
+    })();
+  </script>
+</body>
+</html>
